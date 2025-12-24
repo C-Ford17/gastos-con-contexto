@@ -6,6 +6,17 @@ import '../auth/auth_controller.dart';
 final dashboardSummaryProvider = FutureProvider<Map<String, dynamic>>((
   ref,
 ) async {
+  final auth = ref.watch(authControllerProvider);
+  if (auth is! AuthLoggedIn) {
+    return {
+      'totalIncome': 0,
+      'totalExpense': 0,
+      'balance': 0,
+      'topCategories': [],
+      'expenseByDay': [],
+    };
+  }
+
   final api = ref.watch(apiClientProvider);
   final res = await api.dio.get(
     '/api/insights/summary',
