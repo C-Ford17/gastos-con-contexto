@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../core/network/api_client.dart';
 import '../auth/auth_controller.dart';
+import 'package:go_router/go_router.dart';
 
 final dashboardSummaryProvider = FutureProvider<Map<String, dynamic>>((
   ref,
@@ -39,6 +40,11 @@ class HomeDashboardScreen extends ConsumerWidget {
       appBar: AppBar(
         title: const Text('Dashboard'),
         actions: [
+          IconButton(
+            tooltip: 'Transacciones',
+            onPressed: () => context.go('/transactions'),
+            icon: const Icon(Icons.receipt_long),
+          ),
           TextButton(
             onPressed: () => ref.read(authControllerProvider.notifier).logout(),
             child: const Text('Logout'),

@@ -5,6 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'features/auth/auth_controller.dart';
 import 'features/auth/login_screen.dart';
 import 'features/dashboard/home_dashboard_screen.dart';
+import 'features/transactions/transactions_screen.dart';
 
 final goRouterProvider = Provider<GoRouter>((ref) {
   // refresca redirects cuando cambia el auth state
@@ -17,6 +18,10 @@ final goRouterProvider = Provider<GoRouter>((ref) {
       GoRoute(
         path: '/dashboard',
         builder: (context, state) => const HomeDashboardScreen(),
+      ),
+      GoRoute(
+        path: '/transactions',
+        builder: (context, state) => const TransactionsScreen(),
       ),
     ],
     redirect: (context, state) {
