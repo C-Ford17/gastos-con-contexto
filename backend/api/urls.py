@@ -3,6 +3,7 @@ from api import views_auth
 from api import views_categories
 from api import views_expenses
 from api import views_budgets
+from api import views_insights
 
 urlpatterns = [
     path("auth/register", views_auth.register),
@@ -15,4 +16,5 @@ urlpatterns = [
     path("budgets", views_budgets.budgets),
     path("budgets/alerts", views_budgets.budget_alerts),
     path("budgets/<str:budget_id>", views_budgets.budget_detail),
+    path("insights/summary", views_insights.insights_summary),
 ]
