@@ -20,6 +20,11 @@ def run():
     db["expenses"].create_index([("userId", ASCENDING), ("mood", ASCENDING)])
     db["expenses"].create_index([("userId", ASCENDING), ("date", DESCENDING), ("type", ASCENDING), ("categoryId", ASCENDING)])
 
+
+    # budgets: unique por userId+month+categoryId
+    db["budgets"].create_index([("userId", ASCENDING), ("month", ASCENDING), ("categoryId", ASCENDING)], unique=True)
+    db["budgets"].create_index([("userId", ASCENDING), ("month", ASCENDING)])
+
 if __name__ == "__main__":
     run()
     print("Indexes ensured.")

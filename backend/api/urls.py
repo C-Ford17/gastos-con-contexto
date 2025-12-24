@@ -2,6 +2,7 @@ from django.urls import path
 from api import views_auth
 from api import views_categories
 from api import views_expenses
+from api import views_budgets
 
 urlpatterns = [
     path("auth/register", views_auth.register),
@@ -11,4 +12,7 @@ urlpatterns = [
     path("categories/<str:category_id>", views_categories.category_detail),
     path("expenses", views_expenses.expenses),
     path("expenses/<str:expense_id>", views_expenses.expense_detail),   
+    path("budgets", views_budgets.budgets),
+    path("budgets/alerts", views_budgets.budget_alerts),
+    path("budgets/<str:budget_id>", views_budgets.budget_detail),
 ]
